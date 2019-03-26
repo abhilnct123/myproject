@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package planetfood.pojo;
+
+/**
+ *
+ * @author ABHINASH
+ */
+public class UserProfile {
+    private static String username;
+    private static String usertype;
+    private static String Userid;
+
+    public static String getUserid() {
+        return Userid;
+    }
+
+    public static void setUserid(String Userid) {
+        UserProfile.Userid = Userid;
+    }
+    
+    
+    public static String getUsertpe(){
+        return usertype;
+        
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public static void setUsername(String username) {
+        UserProfile.username = username;
+    }
+
+    public static String getUsertype() {
+        return usertype;
+    }
+
+    public static void setUsertype(String usertype) {
+        UserProfile.usertype = usertype;
+    }
+    
+    
+}
