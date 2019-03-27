@@ -6,8 +6,12 @@
 package planetfood.gui;
 
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import planetfood.dao.OrderDao;
@@ -239,14 +243,18 @@ DefaultTableModel model;
 
     private void btnShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowOrdersActionPerformed
         {
-        Date startDate=dcStartDate.getDate();
-        Date endDate=dcEndDate.getDate();
-        //System.out.println("Starting Date is "+startDate);
-        //System.out.println("End Date is "+endDate);
+            
+        Date d1=dcStartDate.getDate();
+        Date d2=dcEndDate.getDate();
+        
+        
+         //   String d1=sdf.format(startDate);
+           // String d2=sdf.format(endDate);
+       
         //model.setRowCount(0);
         try{
-            orderList=OrderDao.getOrdersByDateByUser(startDate, endDate,UserProfile.getUserid());
-            //.out.println("hii"+orderList);
+            orderList=OrderDao.getOrdersByDate(d1,d2);
+            //out.println("hii"+orderList);
             if(orderList.isEmpty()==true)
                 JOptionPane.showMessageDialog(null,"Sorry! No orders present","Error!",JOptionPane.ERROR_MESSAGE);
             else

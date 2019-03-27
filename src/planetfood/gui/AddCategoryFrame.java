@@ -78,6 +78,12 @@ public class AddCategoryFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Category Id");
 
+        txtCatId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCatIdActionPerformed(evt);
+            }
+        });
+
         jLabel3.setBackground(new java.awt.Color(0, 153, 102));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,6 +306,10 @@ AdminOptionsFrame opt=new AdminOptionsFrame();
         opt.setVisible(true);
         this.dispose();          // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtCatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCatIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCatIdActionPerformed
 
     /**
      * @param args the command line arguments

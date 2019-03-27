@@ -236,7 +236,8 @@ HashMap<String,String> employees=new HashMap<>();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditEmpActionPerformed
-        {int result=validateInput();
+        {
+        int result=validateInput();
         if(result==0)
         {
             System.out.println(result);

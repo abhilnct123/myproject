@@ -131,6 +131,11 @@ public class RemoveProductFrame extends javax.swing.JFrame {
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -275,6 +280,13 @@ try{
     private void lblLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseExited
       lblLogout.setForeground(Color.WHITE);    // TODO add your handling code here:
     }//GEN-LAST:event_lblLogoutMouseExited
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        AdminOptionsFrame aof=new AdminOptionsFrame();
+      aof.setVisible(true);
+            this.dispose(); 
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments

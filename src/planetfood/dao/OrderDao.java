@@ -27,32 +27,31 @@ import planetfood.pojo.OrderDetail;
 public class OrderDao {
     public static ArrayList<Order>getOrdersByDate(Date startDate,Date endDate)throws SQLException
     {
+      
+        java.sql.Date d1=new java.sql.Date(startDate.getTime());
+        java.sql.Date d2=new java.sql.Date(endDate.getTime());
         Connection conn=DBConnection.getConnection();
-        PreparedStatement ps=conn.prepareStatement("Select * from Orders where  ord_date between ? and ?");
-        long ms1=startDate.getTime();
-        long ms2=endDate.getTime();
-        java.sql.Date d1=new java.sql.Date(ms1);
-         java.sql.Date d2=new java.sql.Date(ms2);
-        // System.out.println(d1);
+        PreparedStatement ps=conn.prepareStatement("Select * from Orders where ord_date between ? and ?");
+         
          ps.setDate(1, d1);
          ps.setDate(2, d2);
-         System.out.println(d1);
-         System.out.println(d2);
+         
          ResultSet rs=ps.executeQuery();
          ArrayList<Order>orderList=new ArrayList<>();
          
-        // System.out.println(d2);
+       
          while(rs.next())
          {
-             System.out.println("hello");
+             
              Order obj=new Order();
              obj.setOrdId(rs.getString("ord_id"));
              java.sql.Date d=rs.getDate("ord_date");
+            
              SimpleDateFormat sdf=new SimpleDateFormat("dd-MMM-yyyy");
              
              String dateStr=sdf.format(d);
              obj.setOrdDate(dateStr);
-             obj.setOrdAmount(rs.getDouble("ord_amount"));
+           //  obj.setOrdAmount(rs.getDouble("ord_amount"));
              obj.setGst(rs.getDouble("gst"));
              obj.setGstAmount(rs.getDouble("gst_amount"));
              obj.setGrandTotal(rs.getDouble("grand_total"));
@@ -150,24 +149,22 @@ public class OrderDao {
         }
         return orderList;
     }
-     public static ArrayList<Order> getOrdersByDateByUser(Date startDate,Date endDate , String user )throws SQLException{
+     public static ArrayList<Order> getOrdersByDateByUser(String ms1,String ms2 )throws SQLException, ParseException{
         Connection conn=DBConnection.getConnection();
-        //System.out.println(startDate);
-        PreparedStatement ps=conn.prepareStatement("select * from orders where userid =? and ord_date between ? and ?");
-        long ms1=startDate.getTime();
-        long ms2=endDate.getTime();
-        java.sql.Date d1=new java.sql.Date(ms1);
-        java.sql.Date d2=new java.sql.Date (ms2);
+        System.out.println(ms1);
+        PreparedStatement ps=conn.prepareStatement("select * from orders where ord_date between ? and ?");
+        SimpleDateFormat sdf=new SimpleDateFormat("dd-MMM-yyyy");
+        java.util.Date d1=(java.util.Date) sdf.parse(ms1);
+        java.util.Date d2=(java.util.Date) sdf.parse(ms2);
         System.out.println(d1);
-        ps.setString(1, user);
-        ps.setDate(2,d1);
-        ps.setDate(3, d2);
+        
+        ps.setDate(1, (java.sql.Date) d1);
+        ps.setDate(2, (java.sql.Date) d2);
         ArrayList<Order> orderList=new ArrayList<>();
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
             Order obj=new Order();
             obj.setOrdId(rs.getString("ord_id"));
-            SimpleDateFormat sdf=new SimpleDateFormat("dd-MMM-yyyy");
             java.sql.Date d=rs.getDate("Ord_date");
             String dateStr=sdf.format(d);
             obj.setOrdDate(dateStr);

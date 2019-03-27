@@ -26,22 +26,21 @@ public class ViewAllOrdersFrame extends javax.swing.JFrame {
     public ViewAllOrdersFrame() {
         initComponents();
         lblUserName.setText("Hello"+" "+UserDao.showUsername());
-    this.setLocationRelativeTo(null);
-          showOrders();
+        this.setLocationRelativeTo(null);
+        showOrders();
     }
 
      public  void showOrders(){
         try{
            
-        ArrayList <Order>  ordersList=OrderDao.getAllOrders();
+            ArrayList <Order>  ordersList=OrderDao.getAllOrders();
             //.out.println("hii"+orderList);
             if(ordersList.isEmpty()==true)
                 JOptionPane.showMessageDialog(null,"Sorry! No products present","Error!",JOptionPane.ERROR_MESSAGE);
             else
             {
                 Object[]rows=new Object[8]; //size corresponds to the no. of columns in the table
-                DefaultTableModel
-                        model=(DefaultTableModel)jtAllOrdersDetails.getModel();//return type of getmodel() is TableModel , thats why we down cast it to its base class DefaultTableModel
+                DefaultTableModel model=(DefaultTableModel)jtAllOrdersDetails.getModel();//return type of getmodel() is TableModel , thats why we down cast it to its base class DefaultTableModel
                 for(Order o:ordersList){
                     rows[0]=o.getOrdId();
                     rows[1]=o.getOrdDate();
